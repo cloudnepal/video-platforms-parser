@@ -165,7 +165,10 @@ class VideoPlatformsParser
                     'id' => $params_url['v']
                 ];
             }
-        } else if (strpos($parsed_url['host'], 'twitter.com') !== false) {
+        } elseif (
+            strpos($parsed_url['host'], 'twitter.com') !== false ||
+            strpos($parsed_url['host'], 'x.com') !== false
+        ) {
             if (empty($parsed_url['path'])) return false;
             $path = explode('/', $parsed_url['path']);
             if (!is_numeric(end($path))) return false;
